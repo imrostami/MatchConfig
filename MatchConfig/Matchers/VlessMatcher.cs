@@ -13,5 +13,7 @@ namespace MatchConfig.Matchers
 
         public override List<string> Match(string input)
             => _regex.Matches(input).ToMatchList();
+
+        public override MatcherTypes MatcherType => MatcherTypes.Vless;
     }
 }

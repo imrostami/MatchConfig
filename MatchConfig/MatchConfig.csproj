@@ -8,8 +8,4 @@
     <None Remove="Matcher.cs~RF15e42fe.TMP" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Matchers\" />
-  </ItemGroup>
-
 </Project>
