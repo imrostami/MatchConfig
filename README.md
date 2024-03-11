@@ -16,5 +16,45 @@
 
 از داخل متن ها
 
+روش نصب به این صورته که توی آدرس گیت هاب وارد بخش ریلیز ها بشین و آخرین dll که منتشر میشه رو دانلود کنین و به پروژتون اضافه کنید (بعدا Nuget هم براش منتشر میکنم برای راحتی کار)
 
-کمک میکنه به استخراج سریع و ساده لیست کانفیگ های مد نظر شما از داخل پیام ها
+
+روش استفاده ازش بسیار راحته و به دو صورت قابل استفاده اس 
+
+📌 1- به صورت Single Match یا استخراج لیست تکی به این صورت 
+
+```csharp
+var data = File.ReadAllText("یه فایل متنی با یه عالمه پروکسی.txt");
+
+ConfigMatcher matcher = new ();
+
+//استخراج Vless
+List<string> vlessProxys = matcher.Vless.Match(data);
+
+
+//استخراج Vmess
+List<string> vmessProxys = matcher.Vmess.Match(data);
+
+// و الباقی چیز ها
+```
+
+
+📌 به صورت Multi Match (استخراج لیست چند تایی)
+```csharp
+var data = File.ReadAllText("proxy.txt");
+ConfigMatcher matcher = new();
+var builder = new MatchEngineBuilder();
+
+
+//استخراج لیست پروکسی های تلگرام و vless و vmess از متن
+
+var matchEngine = builder.AppendMatch(matcher.TelegramProxy)
+.AppenMatch(matcher.Vless)
+.AppendMatch(matcher.Vmess)
+    .Build();
+
+
+//گرفتن خروجی
+var List<MatchEngineResult> results = matchEngine.GetMatches(data);
+
+```
