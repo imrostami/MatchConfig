@@ -55,6 +55,6 @@ var matchEngine = builder.AppendMatch(matcher.TelegramProxy)
 
 
 //گرفتن خروجی
-var List<MatchEngineResult> results = matchEngine.GetMatches(data);
+List<MatchEngineResult> results = matchEngine.GetMatches(data);
 
 ```
