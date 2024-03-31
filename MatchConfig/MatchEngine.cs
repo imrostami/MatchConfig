@@ -11,7 +11,7 @@ namespace MatchConfig
             _matcher = matcher;
         }
 
-        public delegate void MatchResult(List<MatchEngineResult> result);
+        public delegate void MatchResult(List<MatchEngineResult> result , string messageText);
 
         public event MatchResult MatchAvailable;
 
@@ -30,7 +30,7 @@ namespace MatchConfig
             }
             if (results.Any() && MatchAvailable != null)
             {
-                MatchAvailable(results);
+                MatchAvailable(results , messageText:data);
             }
 
 
